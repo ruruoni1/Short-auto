@@ -3,8 +3,8 @@
 > 운영 상태의 정본은 `docs/CURRENT_STATUS.md`다. 이 문서는 초기 총괄 기준선과 상세 위험 기록을 보존한다.
 
 > 기준일: 2026-09-04 (Asia/Seoul)  
-> 현재 단계: Phase 1 Core 완료 / Caption 구현 진행  
-> 전체 상태: **01_Core 검증 완료, 02_Caption 진행 중**
+> 현재 단계: Phase 1 Caption 완료 / Timeline 준비
+> 전체 상태: **Core·Caption 검증 완료, 다음 작업 Timeline**
 
 ## 한눈에 보기
 

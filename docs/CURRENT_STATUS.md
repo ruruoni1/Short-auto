@@ -28,8 +28,8 @@
 
 - 00_Master: READY
 - 01_Core: COMPLETE
-- 02_Caption: IN_PROGRESS
-- 03_Timeline: BLOCKED_BY_CAPTION
+- 02_Caption: COMPLETE
+- 03_Timeline: READY
 - 04_Scene: BLOCKED
 - 05_Asset: WAITING_PHASE
 - 06_Theme_Motion: WAITING_PHASE
@@ -65,7 +65,9 @@
 
 ## 다음 실행
 
-02_Caption이 SRT 파싱, Caption JSON, 표시 단위 분할과 Validator를 구현한다. 원본 SRT 시간은 변경하지 않고 Core의 `TimeUs`·오류·ID·프로젝트 계약을 사용한다.
+2026-09-05: Caption 구현과 workspace 연결 완료. Master가 줄바꿈에 따른 최대 줄 수 초과를 수정하고 회귀 테스트를 추가했다. 전체 테스트 20개, 타입검사·Desktop/Remotion 빌드, 통합 계약 62개 검사 통과. 실제 편집 UI/E2E는 아직 미구현이다.
+
+다음은 03_Timeline의 Source/Output Resolver와 Insert/Pause 구현이다. Caption 공개 API와 원본 시간 불변 계약을 사용한다.
 
 02_Caption 완료 관문:
 

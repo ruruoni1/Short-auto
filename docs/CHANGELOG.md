@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-09-05
+
+- Caption SRT 파싱·표시 단위 분할·Validator와 공개 패키지 추가.
+- 단어 줄바꿈으로 최대 자막 줄 수를 초과하는 문제 수정.
+- Caption workspace 연결 및 전체 테스트 20개 통과.
+
 ## Unreleased - 2026-09-04
 
 ### Changed

@@ -2,6 +2,7 @@
   "files": [],
   "references": [
     { "path": "packages/core" },
+    { "path": "packages/caption" },
     { "path": "packages/channel-pack-nihon-zupzup" },
     { "path": "apps/desktop" },
     { "path": "apps/remotion" }
