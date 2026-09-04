@@ -1,0 +1,15 @@
+{
+  "name": "@nihon-zupzup/remotion",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@nihon-zupzup/core": "0.1.0"
+  },
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "bundle": "remotion bundle src/index.ts --out-dir dist",
+    "smoke": "remotion compositions src/index.ts",
+    "typecheck": "tsc -b --pretty false"
+  }
+}

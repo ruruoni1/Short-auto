@@ -1,0 +1,10 @@
+:root {
+  font-family: Inter, "Noto Sans KR", system-ui, sans-serif;
+  color: #f7f7f4;
+  background: #171817;
+}
+
+body { margin: 0; }
+main { max-width: 720px; margin: 20vh auto; padding: 32px; }
+.eyebrow { color: #d6ff4b; font-weight: 700; }
+h1 { font-size: clamp(2rem, 6vw, 4rem); margin: 0.25em 0; }

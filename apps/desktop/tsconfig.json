@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["vite/client"]
+  },
+  "references": [
+    { "path": "../../packages/core" },
+    { "path": "../../packages/channel-pack-nihon-zupzup" }
+  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts"]
+}

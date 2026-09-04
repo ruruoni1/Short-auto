@@ -1,0 +1,123 @@
+:root {
+  --motion-instant: 80ms;
+  --motion-fast: 160ms;
+  --motion-base: 240ms;
+  --motion-slow: 420ms;
+  --motion-hero: 720ms;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --motion-distance-sm: 0.75rem;
+  --motion-distance-lg: 1.5rem;
+  --motion-stagger: 60ms;
+}
+
+.motion-interactive {
+  transition:
+    transform var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) ease-out,
+    background-color var(--motion-fast) ease-out,
+    box-shadow var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-interactive:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.motion-interactive:active {
+  transform: translateY(0) scale(0.99);
+  transition-duration: var(--motion-instant);
+}
+
+.panel-enter {
+  animation: panel-enter var(--motion-base) var(--ease-standard) both;
+}
+
+.panel-exit {
+  animation: panel-exit var(--motion-fast) var(--ease-exit) both;
+}
+
+.is-dragging,
+.is-resizing,
+.is-scrubbing {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Add .is-visible when the element first reaches roughly 25% visibility. */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--motion-distance-sm));
+  transition:
+    opacity var(--motion-slow) ease-out,
+    transform var(--motion-slow) var(--ease-standard);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-group > .reveal:nth-child(2) { transition-delay: calc(var(--motion-stagger) * 1); }
+.stagger-group > .reveal:nth-child(3) { transition-delay: calc(var(--motion-stagger) * 2); }
+.stagger-group > .reveal:nth-child(4) { transition-delay: calc(var(--motion-stagger) * 3); }
+.stagger-group > .reveal:nth-child(5) { transition-delay: calc(var(--motion-stagger) * 4); }
+.stagger-group > .reveal:nth-child(n + 6) { transition-delay: calc(var(--motion-stagger) * 5); }
+
+.hero-reveal {
+  animation: hero-enter var(--motion-hero) var(--ease-emphasis) both;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes panel-enter {
+  from {
+    opacity: 0;
+    transform: translateX(var(--motion-distance-sm));
+  }
+}
+
+@keyframes panel-exit {
+  to {
+    opacity: 0;
+    transform: translateX(calc(var(--motion-distance-sm) * 0.5));
+  }
+}
+
+@media (max-width: 40rem) {
+  :root {
+    --motion-distance-sm: 0.5rem;
+    --motion-distance-lg: 1rem;
+    --motion-stagger: 40ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .reveal,
+  .hero-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

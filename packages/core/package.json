@@ -1,0 +1,22 @@
+{
+  "name": "@nihon-zupzup/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./ids": { "types": "./dist/ids.d.ts", "import": "./dist/ids.js" },
+    "./errors": { "types": "./dist/errors.d.ts", "import": "./dist/errors.js" },
+    "./events": { "types": "./dist/events.d.ts", "import": "./dist/events.js" },
+    "./documents": { "types": "./dist/documents.d.ts", "import": "./dist/documents.js" },
+    "./status": { "types": "./dist/status.d.ts", "import": "./dist/status.js" },
+    "./time": { "types": "./dist/time.d.ts", "import": "./dist/time.js" },
+    "./channel-packs": { "types": "./dist/channel-packs.d.ts", "import": "./dist/channel-packs.js" }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b --pretty false"
+  }
+}

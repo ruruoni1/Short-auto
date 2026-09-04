@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nihon-zupzup.local/schemas/asset-record.schema.json",
+  "title": "AssetRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "assetId",
+    "projectId",
+    "kind",
+    "status",
+    "displayName",
+    "content",
+    "source",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "assetId": {
+      "type": "string",
+      "pattern": "^ast_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": ["image", "video", "audio"]
+    },
+    "status": {
+      "enum": ["importing", "processing", "ready", "failed", "missing", "trashed"]
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256", "byteSize", "mimeType", "extension", "storageKey"],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "byteSize": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mimeType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extension": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+$"
+        },
+        "storageKey": {
+          "type": "string",
+          "pattern": "^originals/sha256/[a-f0-9]{2}/[a-f0-9]{64}\\.[a-z0-9]+$"
+        }
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "durationUs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "description": "Duration in integer microseconds, aligned with the timeline contract."
+        },
+        "frameRate": { "type": "number", "exclusiveMinimum": 0 },
+        "audioChannels": { "type": "integer", "minimum": 1 },
+        "videoCodec": { "type": "string", "minLength": 1 },
+        "audioCodec": { "type": "string", "minLength": 1 }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "enum": ["local", "generated", "recorded", "downloaded"]
+        },
+        "originalFileName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "importedFrom": {
+          "type": "string",
+          "description": "Optional audit value. Do not expose or serialize this into portable project documents."
+        },
+        "generator": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "organization": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "folderId": { "type": ["string", "null"] },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 80 },
+          "uniqueItems": true
+        },
+        "favorite": { "type": "boolean" }
+      }
+    },
+    "derivatives": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["storageKey", "status"],
+        "properties": {
+          "storageKey": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["queued", "processing", "ready", "failed"] },
+          "errorCode": { "type": "string" }
+        }
+      }
+    },
+    "failure": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "message": { "type": "string", "minLength": 1 },
+        "retryable": { "type": "boolean" }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

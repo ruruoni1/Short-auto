@@ -1,0 +1,50 @@
+# Windows and editors
+Thumbs.db
+Desktop.ini
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.key
+*.pem
+
+# Dependencies and caches
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/cache/
+.turbo/
+.cache/
+
+# Build, package, and test output
+dist/
+dist-*/
+build/
+out/
+release/
+artifacts/
+coverage/
+*.log
+*.tsbuildinfo
+
+# Desktop packager output
+target/
+src-tauri/target/
+*.appx
+*.msix
+*.msi
+*.exe.blockmap
+
+# Keep dependency lock files tracked for reproducible releases.
+!package-lock.json
+!pnpm-lock.yaml
+!yarn.lock
+!Cargo.lock

@@ -1,0 +1,42 @@
+{
+  "name": "nihon-zupzup-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @nihon-zupzup/desktop",
+    "dev:electron": "npm run dev:electron --workspace @nihon-zupzup/desktop",
+    "studio": "npm run studio --workspace @nihon-zupzup/remotion",
+    "typecheck": "tsc -b --pretty false",
+    "test": "vitest run",
+    "build": "npm run typecheck && npm run build --workspace @nihon-zupzup/desktop && npm run bundle --workspace @nihon-zupzup/remotion",
+    "smoke": "npm run smoke --workspace @nihon-zupzup/remotion"
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10.0.0"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.520",
+    "electron": "44.2.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.520"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.13",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.1.1",
+    "concurrently": "^9.2.4",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "5.0.0",
+    "wait-on": "9.0.4"
+  }
+}
