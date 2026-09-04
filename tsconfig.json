@@ -3,6 +3,7 @@
   "references": [
     { "path": "packages/core" },
     { "path": "packages/caption" },
+    { "path": "packages/timeline" },
     { "path": "packages/channel-pack-nihon-zupzup" },
     { "path": "apps/desktop" },
     { "path": "apps/remotion" }

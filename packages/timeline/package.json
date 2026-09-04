@@ -1,0 +1,23 @@
+{
+  "name": "@nihon-zupzup/timeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./resolver": { "types": "./dist/resolver.d.ts", "import": "./dist/resolver.js" },
+    "./types": { "types": "./dist/types.d.ts", "import": "./dist/types.js" },
+    "./validator": { "types": "./dist/validator.d.ts", "import": "./dist/validator.js" }
+  },
+  "dependencies": {
+    "@nihon-zupzup/caption": "0.1.0",
+    "@nihon-zupzup/core": "0.1.0"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b --pretty false",
+    "test": "vitest run src/timeline.test.ts"
+  }
+}

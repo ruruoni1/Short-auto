@@ -1,5 +1,13 @@
 # DECISIONS
 
+## 2026-09-05 Timeline Resolver
+
+- Source/Output 변환은 `@nihon-zupzup/timeline` 공개 API를 사용한다.
+- 같은 anchor의 작업은 입력 순서를 유지한다. before는 삽입 직전, after는 모든 삽입 후의 Source 재개 시각이다.
+- Overlay는 영상 길이를 늘리지 않는다. 요청 범위는 보존하되 최종 길이 초과 경고를 제공하고 활성 조회는 영상 끝에서 종료한다.
+- 모든 출력 끝점의 안전 정수 범위를 사전 검증한다.
+- Resolver 완료와 편집 명령·Undo/Redo·재생 UI 완료는 별도 추적한다.
+
 ## 2026-09-05 Caption 연결
 
 - `@nihon-zupzup/caption`을 공통 workspace와 TypeScript 빌드에 등록한다.

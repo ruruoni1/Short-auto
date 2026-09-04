@@ -2,6 +2,9 @@
 
 ## 2026-09-05
 
+- Timeline Source/Output Resolver, Insert/Pause/Overlay와 양방향 시간 변환 추가.
+- Overlay overflow 및 원본 길이 밖 자막 검증 보완. 전체 테스트 30개 통과.
+
 - Caption SRT 파싱·표시 단위 분할·Validator와 공개 패키지 추가.
 - 단어 줄바꿈으로 최대 자막 줄 수를 초과하는 문제 수정.
 - Caption workspace 연결 및 전체 테스트 20개 통과.

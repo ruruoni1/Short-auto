@@ -29,8 +29,8 @@
 - 00_Master: READY
 - 01_Core: COMPLETE
 - 02_Caption: COMPLETE
-- 03_Timeline: READY
-- 04_Scene: BLOCKED
+- 03_Timeline: RESOLVER_COMPLETE / EDIT_COMMANDS_PENDING
+- 04_Scene: READY
 - 05_Asset: WAITING_PHASE
 - 06_Theme_Motion: WAITING_PHASE
 - 07_AutoPlanner: BLOCKED
@@ -67,7 +67,9 @@
 
 2026-09-05: Caption 구현과 workspace 연결 완료. Master가 줄바꿈에 따른 최대 줄 수 초과를 수정하고 회귀 테스트를 추가했다. 전체 테스트 20개, 타입검사·Desktop/Remotion 빌드, 통합 계약 62개 검사 통과. 실제 편집 UI/E2E는 아직 미구현이다.
 
-다음은 03_Timeline의 Source/Output Resolver와 Insert/Pause 구현이다. Caption 공개 API와 원본 시간 불변 계약을 사용한다.
+2026-09-05: Timeline Resolver 연결·검토 완료. Overlay overflow는 구조화 오류, 영상 끝 초과는 경고, 원본 길이 밖 자막은 오류로 검증한다. 전체 테스트 30개, 타입검사·빌드, 통합 계약 검사 62개와 공개 import 검증 통과. 트랙/클립 편집 명령·Undo/Redo·재생 UI는 후속 범위다.
+
+다음은 04_Scene의 9개 기본 Scene runtime과 Caption/Timeline 연결이다.
 
 02_Caption 완료 관문:
 
